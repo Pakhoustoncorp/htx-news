@@ -1,33 +1,204 @@
-<section class="grid">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Houston Office Highlights - July 2026</title>
 
-  <div class="card">
-    <img src="images/upcoming-events.jpg" alt="Upcoming Events">
-    <h2>📅 Upcoming Events</h2>
-    <p>Stay tuned for office activities, meetings, reminders, and team updates coming this month.</p>
-  </div>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-  <div class="card">
-    <img src="images/birthdays.jpg" alt="Birthdays">
-    <h2>🎂 July Birthdays</h2>
-    <p>Happy birthday to our July team members! We hope your month is full of joy and celebration.</p>
-  </div>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f7fbff, #fff4f4);
+      color: #1f2937;
+    }
 
-  <div class="card">
-    <img src="images/celebrations.jpg" alt="Celebrations">
-    <h2>🎉 Celebrations</h2>
-    <p>Let’s celebrate team wins, work anniversaries, milestones, and special moments around the office.</p>
-  </div>
+    header {
+      text-align: center;
+      padding: 70px 20px;
+      background: linear-gradient(135deg, #0057b8, #e63946);
+      color: white;
+    }
 
-  <div class="card">
-    <img src="images/appreciation.jpg" alt="Monthly Appreciation">
-    <h2>🌟 Monthly Appreciation</h2>
-    <p>Thank you to everyone for your hard work, teamwork, and positive attitude. You make the Houston office better every day.</p>
-  </div>
+    header h1 {
+      font-size: 48px;
+      margin: 0;
+    }
 
-  <div class="card">
-    <img src="images/quote.jpg" alt="Quote of the Month">
-    <h2>💬 Quote of the Month</h2>
-    <p class="quote">“Great things are done by a series of small things brought together.”</p>
-  </div>
+    header p {
+      font-size: 20px;
+      margin: 10px 0 0;
+    }
 
-</section>
+    .container {
+      max-width: 1150px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .intro h2 {
+      font-size: 32px;
+      color: #0057b8;
+      margin-bottom: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+      transition: 0.3s ease;
+      border-top: 8px solid #0057b8;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: #e5e7eb;
+    }
+
+    .card-content {
+      padding: 24px;
+      text-align: center;
+    }
+
+    .card h2 {
+      font-size: 26px;
+      margin: 0 0 12px;
+      color: #0057b8;
+    }
+
+    .card p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .quote-card {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #0057b8, #e63946);
+      color: white;
+      text-align: center;
+      padding: 45px 25px;
+      border-radius: 22px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+    }
+
+    .quote-card h2 {
+      font-size: 30px;
+      margin-top: 0;
+    }
+
+    .quote-card p {
+      font-size: 24px;
+      font-style: italic;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px;
+      margin-top: 50px;
+      background: #0057b8;
+      color: white;
+      font-size: 16px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 34px;
+      }
+
+      .quote-card p {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>☀️ Houston Office Highlights</h1>
+    <p>July 2026 Edition</p>
+    <p>Celebrating our people, moments, and wins.</p>
+  </header>
+
+  <main class="container">
+
+    <section class="intro">
+      <h2>Welcome to July!</h2>
+      <p>A colorful monthly update made for our Houston office team.</p>
+    </section>
+
+    <section class="grid">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80" alt="Upcoming Events">
+        <div class="card-content">
+          <h2>📅 Upcoming Events</h2>
+          <p>Stay tuned for office activities, meetings, reminders, and team updates coming this month.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/birthday.gif" alt="July Birthdays">
+        <div class="card-content">
+          <h2>🎂 July Birthdays</h2>
+          <p>Happy birthday to our July team members! We hope your month is full of joy and celebration.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=80" alt="Celebrations">
+        <div class="card-content">
+          <h2>🎉 Celebrations</h2>
+          <p>Let’s celebrate team wins, work anniversaries, milestones, and special moments around the office.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="Monthly Appreciation">
+        <div class="card-content">
+          <h2>🌟 Monthly Appreciation</h2>
+          <p>Thank you for your hard work, teamwork, and positive attitude. You make the Houston office better every day.</p>
+        </div>
+      </div>
+
+      <div class="quote-card">
+        <h2>💬 Quote of the Month</h2>
+        <p>“Great things are done by a series of small things brought together.”</p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    Made with appreciation for the Houston Office ❤️
+  </footer>
+
+</body>
+</html>
