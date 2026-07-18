@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Houston Office News</title>
 
   <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
@@ -10,63 +10,47 @@
   <style>
     * { box-sizing: border-box; }
 
+    :root {
+      --blue: #0057b8;
+      --red: #e63946;
+      --gold: #f59e0b;
+    }
+
+    html, body { min-height: 100%; }
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(0,87,184,.25), transparent 28%),
-        radial-gradient(circle at 90% 15%, rgba(230,57,70,.22), transparent 30%),
-        radial-gradient(circle at 50% 95%, rgba(245,158,11,.22), transparent 35%),
-        linear-gradient(135deg, #eaf3ff, #fff5f0);
-      text-align: center;
-      color: #1f2937;
-      min-height: 100vh;
       overflow-x: hidden;
-    }
-
-    .decor {
-      position: fixed;
-      z-index: -1;
-      opacity: .35;
-      pointer-events: none;
-      font-size: 38px;
-      animation: floaty 5s ease-in-out infinite;
-    }
-
-    .decor.one { top: 105px; left: 35px; }
-    .decor.two { top: 170px; right: 45px; animation-delay: 1s; }
-    .decor.three { bottom: 120px; left: 70px; animation-delay: 2s; }
-    .decor.four { bottom: 100px; right: 80px; animation-delay: 1.5s; }
-
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1f2937;
+      text-align: center;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(0,87,184,.24), transparent 30%),
+        radial-gradient(circle at 90% 15%, rgba(230,57,70,.20), transparent 30%),
+        radial-gradient(circle at 50% 95%, rgba(245,158,11,.20), transparent 36%),
+        linear-gradient(135deg, #eaf3ff, #fff5f0);
     }
 
     .coming-soon {
-      background: linear-gradient(90deg, #0057b8, #e63946, #f59e0b);
-      color: white;
-      padding: clamp(10px, 2vw, 16px);
-      font-size: clamp(20px, 4vw, 28px);
-      font-weight: bold;
+      padding: 13px 18px;
+      color: #fff;
+      font-size: clamp(20px, 4vw, 29px);
+      font-weight: 800;
       letter-spacing: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--red), var(--gold));
       box-shadow: 0 8px 20px rgba(0,0,0,.16);
     }
 
-    header {
-      padding: clamp(12px, 2vw, 20px) 20px 4px;
-    }
-
+    header { padding: 15px 20px 5px; }
     header h1 {
-      color: #0057b8;
-      font-size: clamp(26px, 5vw, 38px);
       margin: 0;
+      color: var(--blue);
+      font-size: clamp(27px, 5vw, 39px);
     }
-
     header p {
-      color: #555;
-      font-size: clamp(14px, 2.5vw, 17px);
-      margin: 8px 0 0;
+      margin: 7px 0 0;
+      color: #4b5563;
+      font-size: 16px;
     }
 
     .book-wrap {
@@ -74,249 +58,268 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 10px auto;
-      padding: 0 10px;
+      padding: 10px;
+      margin: 5px auto;
     }
 
     #book {
-      filter: drop-shadow(0 18px 28px rgba(0,0,0,.22));
+      filter: drop-shadow(0 20px 30px rgba(0,0,0,.25));
     }
 
     .page {
-      background: white;
-      border: 1px solid #ddd;
+      position: relative;
       overflow: hidden;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.12);
       cursor: pointer;
     }
 
     .page-content {
+      position: relative;
       width: 100%;
       height: 100%;
-      padding: clamp(14px, 3vw, 24px);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       overflow: hidden;
     }
 
-    .page-content::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      opacity: .16;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 12% 12%, white 0 8px, transparent 9px),
-        radial-gradient(circle at 85% 18%, white 0 10px, transparent 11px),
-        radial-gradient(circle at 30% 88%, white 0 7px, transparent 8px);
-    }
-
-    .cover .page-content {
-      padding: 0 !important;
-      margin: 0;
-      background: #fff !important;
-      color: white;
-    }
-
-    .events .page-content {
-      background:
-        linear-gradient(135deg, rgba(219,234,254,.92), rgba(255,255,255,.78), rgba(255,247,237,.94)),
-        url("https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=70");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .celebrations .page-content {
-      background:
-        linear-gradient(135deg, rgba(255,247,237,.9), rgba(255,228,230,.84), rgba(255,255,255,.82)),
-        url("https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=70");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .memories .page-content {
-      background:
-        linear-gradient(135deg, rgba(220,252,231,.9), rgba(224,242,254,.84), rgba(255,255,255,.82)),
-        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=70");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .updates .page-content {
-      background:
-        linear-gradient(135deg, rgba(238,242,255,.92), rgba(254,243,199,.86), rgba(255,255,255,.84)),
-        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=70");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .quote .page-content {
-      background:
-        linear-gradient(135deg, rgba(0,87,184,.90), rgba(230,57,70,.84)),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80");
-      background-size: cover;
-      background-position: center;
-      color: white;
-    }
-
-    .content-card {
-      position: relative;
-      z-index: 2;
-      background: rgba(255,255,255,.82);
-      backdrop-filter: blur(6px);
-      border-radius: 22px;
-      padding: 18px;
-      box-shadow: 0 12px 30px rgba(0,0,0,.16);
-      border: 1px solid rgba(255,255,255,.65);
-    }
-
-    .cover .content-card,
-    .quote .content-card {
-      background: rgba(0,0,0,.26);
-      color: white;
-      border: 1px solid rgba(255,255,255,.28);
-    }
-
-    .page h2 {
-      color: #0057b8;
-      font-size: clamp(22px, 4vw, 28px);
-      margin: 6px 0;
-    }
-
-    .cover h2, .quote h2 {
-      color: white;
-      font-size: clamp(28px, 5vw, 36px);
-    }
-
-    .page p {
-      font-size: clamp(13px, 2.4vw, 15px);
-      line-height: 1.45;
-      max-width: 560px;
-      margin: 8px auto;
-    }
-
-    .cover p, .quote p {
-      font-size: clamp(15px, 2.8vw, 18px);
-    }
-
-    .photo-strip {
-      display: flex;
-      gap: 10px;
-      margin-top: 12px;
-      justify-content: center;
-    }
-
-    .photo-strip img {
-      width: 31%;
-      height: clamp(95px, 18vw, 135px);
-      object-fit: cover;
-      border-radius: 14px;
-      border: 4px solid white;
-      box-shadow: 0 8px 18px rgba(0,0,0,.18);
-      transform: rotate(-2deg);
-    }
-
-    .photo-strip img:nth-child(2) { transform: rotate(2deg); }
-    .photo-strip img:nth-child(3) { transform: rotate(-1deg); }
-
-    .pill {
-      display: inline-block;
-      margin: 0 auto 10px;
-      padding: 7px 15px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.9);
-      color: #e63946;
-      font-weight: bold;
-      width: fit-content;
-      font-size: 14px;
-      box-shadow: 0 5px 12px rgba(0,0,0,.10);
-    }
-
-    .cover .pill, .quote .pill {
-      color: white;
-      background: rgba(255,255,255,.25);
-      border: 1px solid rgba(255,255,255,.35);
-    }
-
-    .page-content::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      border-top: 55px solid rgba(255,255,255,.58);
-      border-left: 55px solid transparent;
-      filter: drop-shadow(-3px 3px 5px rgba(0,0,0,.16));
-      opacity: .75;
-      pointer-events: none;
-    }
-
-    .page-count {
-      color: #0057b8;
-      font-weight: bold;
-      margin: 6px 0 4px;
-      font-size: 14px;
-    }
-
-    .hint {
-      color: #555;
-      font-size: 13px;
-      margin: 0 0 12px;
-    }
-
-    footer {
-      background: #0057b8;
-      color: white;
-      padding: 15px;
-      margin-top: 14px;
-      font-size: 14px;
-    }
-
-    
-.cover-image {
+    /* COVER */
+    .cover-image {
+      width: 100%;
+      height: 100%;
       padding: 0 !important;
       margin: 0 !important;
-      width: 100%;
-      height: 100%;
-      background: #fff !important;
-      display: block;
-      overflow: hidden;
+      background: #fff;
     }
 
     .cover-image img {
       width: 100%;
       height: 100%;
+      display: block;
       object-fit: cover;
       object-position: center;
+    }
+
+    /* FIRST PAGE FOR EACH LOCATION */
+    .location-page {
+      --bg: none;
+      position: relative;
+      isolation: isolate;
+      background: #111827;
+    }
+
+    .location-page::before {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      inset: -22px;
+      background-image:
+        linear-gradient(rgba(0,0,0,.20), rgba(0,0,0,.28)),
+        var(--bg);
+      background-size: cover;
+      background-position: center;
+      filter: blur(16px) saturate(1.15);
+      transform: scale(1.08);
+    }
+
+    .location-page::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,.04) 0%,
+        rgba(0,0,0,.03) 52%,
+        rgba(0,0,0,.66) 100%
+      );
+      pointer-events: none;
+    }
+
+    .location-art {
+      position: absolute;
+      inset: 18px 18px 112px;
+      width: calc(100% - 36px);
+      height: calc(100% - 130px);
       display: block;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 16px;
+      filter: drop-shadow(0 12px 18px rgba(0,0,0,.32));
     }
 
-    .cover-image::before,
-    .cover-image::after {
-      display: none !important;
+    .quote-box {
+      position: absolute;
+      z-index: 3;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      padding: 15px 18px;
+      color: #fff;
+      background: rgba(0,0,0,.54);
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      backdrop-filter: blur(7px);
     }
 
+    .quote-box h2 {
+      margin: 0 0 6px;
+      color: #fff;
+      font-size: clamp(22px, 4vw, 31px);
+      line-height: 1.05;
+      text-shadow: 0 2px 6px rgba(0,0,0,.50);
+    }
+
+    .quote-box p {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(15px, 2.5vw, 19px);
+      font-weight: 700;
+      line-height: 1.3;
+      text-shadow: 0 2px 6px rgba(0,0,0,.55);
+    }
+
+    /* SECOND PAGE FOR EACH LOCATION */
+    .team-page {
+      --accent-bg: none;
+      padding: 22px;
+      background:
+        linear-gradient(rgba(255,255,255,.91), rgba(255,255,255,.95)),
+        var(--accent-bg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .team-heading {
+      margin: 4px 50px 14px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,.90);
+      border-radius: 18px;
+      border: 1px solid rgba(0,87,184,.18);
+      box-shadow: 0 8px 18px rgba(0,0,0,.10);
+    }
+
+    .team-heading h2 {
+      margin: 0 0 4px;
+      color: var(--blue);
+      font-size: clamp(24px, 4vw, 32px);
+    }
+
+    .team-heading p {
+      margin: 0;
+      color: #4b5563;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 14px;
+      height: calc(100% - 102px);
+    }
+
+    .team-photo {
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      overflow: hidden;
+      background: #eef4fb;
+      border: 5px solid #fff;
+      border-radius: 17px;
+      box-shadow: 0 9px 20px rgba(0,0,0,.16);
+    }
+
+    .team-photo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .page-number {
+      position: absolute;
+      z-index: 5;
+      top: 13px;
+      right: 14px;
+      min-width: 34px;
+      padding: 6px 9px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      background: rgba(0,0,0,.56);
+      border: 1px solid rgba(255,255,255,.30);
+      border-radius: 999px;
+      backdrop-filter: blur(4px);
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 8px 0 5px;
+    }
+
+    .controls button {
+      min-width: 105px;
+      padding: 10px 16px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      background: var(--blue);
+      border: 0;
+      border-radius: 999px;
+      box-shadow: 0 6px 14px rgba(0,87,184,.24);
+    }
+
+    .page-count {
+      margin: 8px 0 3px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .hint {
+      margin: 0 0 13px;
+      color: #4b5563;
+      font-size: 13px;
+    }
+
+    footer {
+      margin-top: 12px;
+      padding: 15px;
+      color: #fff;
+      background: var(--blue);
+      font-size: 14px;
+    }
 
     @media (max-width: 750px) {
-      .decor { display: none; }
-      .book-wrap { margin-top: 8px; }
-      .page-content::after {
-        border-top-width: 42px;
-        border-left-width: 42px;
+      .book-wrap { padding: 7px; }
+
+      .location-art {
+        inset: 12px 12px 105px;
+        width: calc(100% - 24px);
+        height: calc(100% - 117px);
       }
-      .photo-strip img {
-        height: 85px;
+
+      .quote-box {
+        left: 13px;
+        right: 13px;
+        bottom: 13px;
+        padding: 13px 14px;
       }
+
+      .team-page { padding: 13px; }
+      .team-heading { margin: 4px 42px 10px 4px; }
+      .team-grid { gap: 9px; height: calc(100% - 92px); }
+      .team-photo { border-width: 3px; border-radius: 12px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="decor one">✨</div>
-  <div class="decor two">🎉</div>
-  <div class="decor three">⭐</div>
-  <div class="decor four">🎈</div>
-
   <div class="coming-soon">COMING SOON</div>
 
   <header>
@@ -324,123 +327,478 @@
     <p>July 2026 Edition</p>
   </header>
 
-  <div class="book-wrap">
+  <main class="book-wrap">
     <div id="book">
 
       <div class="page cover">
         <div class="page-content cover-image">
-          <img src="image/Final Cover to USE.png" alt="Houston Office News Cover">
+          <img src="image/Final Cover to USE.png" alt="Houston Office News cover">
         </div>
       </div>
 
-      <div class="page events">
-        <div class="page-content">
-          <div class="content-card">
-            <span class="pill">Upcoming</span>
-            <h2>📅 Upcoming Events</h2>
-            <p>Stay tuned for office activities, meetings, reminders, and team updates throughout the month.</p>
-            <div class="photo-strip">
-              <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=500&q=80" alt="Event">
-              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=500&q=80" alt="Office">
-              <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=500&q=80" alt="Meeting">
-            </div>
+
+      <!-- 1. ARIZONA FEATURE PAGE -->
+      <div class="page">
+        <div class="page-content location-page" style="--bg: url('image/arizona.png');">
+          <img class="location-art" src="image/arizona.png" alt="Arizona artwork">
+          <div class="page-number">1</div>
+          <div class="quote-box">
+            <h2>Arizona</h2>
+            <p>“The Grand Canyon State”</p>
           </div>
         </div>
       </div>
 
-      <div class="page celebrations">
-        <div class="page-content">
-          <div class="content-card">
-            <span class="pill">Team Wins</span>
-            <h2>🎉 Celebrations</h2>
-            <p>Celebrating work milestones, team wins, office moments, and special moments around the Houston office.</p>
-            <div class="photo-strip">
-              <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=500&q=80" alt="Celebration">
-              <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=500&q=80" alt="Party">
-              <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=500&q=80" alt="Balloons">
-            </div>
+      <!-- 2. ARIZONA TEAM PHOTO PAGE -->
+      <div class="page">
+        <div class="page-content team-page" style="--accent-bg: url('image/arizona.png');">
+          <div class="page-number">2</div>
+          <div class="team-heading">
+            <h2>Arizona Team</h2>
+            <p>Team moments and memories</p>
+          </div>
+          <div class="team-grid">
+              <figure class="team-photo">
+                <img src="image/team/arizona-1.png" alt="Arizona team photo 1">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/arizona-2.png" alt="Arizona team photo 2">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/arizona-3.png" alt="Arizona team photo 3">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/arizona-4.png" alt="Arizona team photo 4">
+              </figure>
           </div>
         </div>
       </div>
 
-      <div class="page memories">
-        <div class="page-content">
-          <div class="content-card">
-            <span class="pill">Office Memories</span>
-            <h2>📸 Office Memories</h2>
-            <p>Photos, team moments, office lunches, events, and memories from around the Houston office.</p>
-            <div class="photo-strip">
-              <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=500&q=80" alt="Team">
-              <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=500&q=80" alt="Memory">
-              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=500&q=80" alt="Office">
-            </div>
+      <!-- 3. TUCSON FEATURE PAGE -->
+      <div class="page">
+        <div class="page-content location-page" style="--bg: url('image/tucson.png');">
+          <img class="location-art" src="image/tucson.png" alt="Tucson artwork">
+          <div class="page-number">3</div>
+          <div class="quote-box">
+            <h2>Tucson</h2>
+            <p>“The Old Pueblo”</p>
           </div>
         </div>
       </div>
 
-      <div class="page updates">
-        <div class="page-content">
-          <div class="content-card">
-            <span class="pill">Office News</span>
-            <h2>📰 Office Updates</h2>
-            <p>Important reminders, department updates, announcements, and news can be added here each month.</p>
-            <div class="photo-strip">
-              <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=500&q=80" alt="Office">
-              <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=500&q=80" alt="Updates">
-              <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=500&q=80" alt="News">
-            </div>
+      <!-- 4. TUCSON TEAM PHOTO PAGE -->
+      <div class="page">
+        <div class="page-content team-page" style="--accent-bg: url('image/tucson.png');">
+          <div class="page-number">4</div>
+          <div class="team-heading">
+            <h2>Tucson Team</h2>
+            <p>Team moments and memories</p>
+          </div>
+          <div class="team-grid">
+              <figure class="team-photo">
+                <img src="image/team/tucson-1.png" alt="Tucson team photo 1">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/tucson-2.png" alt="Tucson team photo 2">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/tucson-3.png" alt="Tucson team photo 3">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/tucson-4.png" alt="Tucson team photo 4">
+              </figure>
           </div>
         </div>
       </div>
 
-      <div class="page quote">
-        <div class="page-content">
-          <div class="content-card">
-            <span class="pill">Quote</span>
-            <h2>💬 Quote of the Month</h2>
-            <p>“Great things are done by a series of small things brought together.”</p>
+      <!-- 5. EL PASO FEATURE PAGE -->
+      <div class="page">
+        <div class="page-content location-page" style="--bg: url('image/el-paso.png');">
+          <img class="location-art" src="image/el-paso.png" alt="El Paso artwork">
+          <div class="page-number">5</div>
+          <div class="quote-box">
+            <h2>El Paso</h2>
+            <p>“Sun City”</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. EL PASO TEAM PHOTO PAGE -->
+      <div class="page">
+        <div class="page-content team-page" style="--accent-bg: url('image/el-paso.png');">
+          <div class="page-number">6</div>
+          <div class="team-heading">
+            <h2>El Paso Team</h2>
+            <p>Team moments and memories</p>
+          </div>
+          <div class="team-grid">
+              <figure class="team-photo">
+                <img src="image/team/el-paso-1.png" alt="El Paso team photo 1">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/el-paso-2.png" alt="El Paso team photo 2">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/el-paso-3.png" alt="El Paso team photo 3">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/el-paso-4.png" alt="El Paso team photo 4">
+              </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. LAS VEGAS FEATURE PAGE -->
+      <div class="page">
+        <div class="page-content location-page" style="--bg: url('image/las-vegas.png');">
+          <img class="location-art" src="image/las-vegas.png" alt="Las Vegas artwork">
+          <div class="page-number">7</div>
+          <div class="quote-box">
+            <h2>Las Vegas</h2>
+            <p>“What happens in Vegas, doesn’t always stay in Vegas”</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. LAS VEGAS TEAM PHOTO PAGE -->
+      <div class="page">
+        <div class="page-content team-page" style="--accent-bg: url('image/las-vegas.png');">
+          <div class="page-number">8</div>
+          <div class="team-heading">
+            <h2>Las Vegas Team</h2>
+            <p>Team moments and memories</p>
+          </div>
+          <div class="team-grid">
+              <figure class="team-photo">
+                <img src="image/team/las-vegas-1.png" alt="Las Vegas team photo 1">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/las-vegas-2.png" alt="Las Vegas team photo 2">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/las-vegas-3.png" alt="Las Vegas team photo 3">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/las-vegas-4.png" alt="Las Vegas team photo 4">
+              </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. DALLAS FEATURE PAGE -->
+      <div class="page">
+        <div class="page-content location-page" style="--bg: url('image/dallas.png');">
+          <img class="location-art" src="image/dallas.png" alt="Dallas artwork">
+          <div class="page-number">9</div>
+          <div class="quote-box">
+            <h2>Dallas</h2>
+            <p>“A Maverick, Can-Do Spirit, Find Your All”</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. DALLAS TEAM PHOTO PAGE -->
+      <div class="page">
+        <div class="page-content team-page" style="--accent-bg: url('image/dallas.png');">
+          <div class="page-number">10</div>
+          <div class="team-heading">
+            <h2>Dallas Team</h2>
+            <p>Team moments and memories</p>
+          </div>
+          <div class="team-grid">
+              <figure class="team-photo">
+                <img src="image/team/dallas-1.png" alt="Dallas team photo 1">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/dallas-2.png" alt="Dallas team photo 2">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/dallas-3.png" alt="Dallas team photo 3">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/dallas-4.png" alt="Dallas team photo 4">
+              </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. WEST TEXAS FEATURE PAGE -->
+      <div class="page">
+        <div class="page-content location-page" style="--bg: url('image/west-texas.png');">
+          <img class="location-art" src="image/west-texas.png" alt="West Texas artwork">
+          <div class="page-number">11</div>
+          <div class="quote-box">
+            <h2>West Texas</h2>
+            <p>“Friendly City of Progress”</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. WEST TEXAS TEAM PHOTO PAGE -->
+      <div class="page">
+        <div class="page-content team-page" style="--accent-bg: url('image/west-texas.png');">
+          <div class="page-number">12</div>
+          <div class="team-heading">
+            <h2>West Texas Team</h2>
+            <p>Team moments and memories</p>
+          </div>
+          <div class="team-grid">
+              <figure class="team-photo">
+                <img src="image/team/west-texas-1.png" alt="West Texas team photo 1">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/west-texas-2.png" alt="West Texas team photo 2">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/west-texas-3.png" alt="West Texas team photo 3">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/west-texas-4.png" alt="West Texas team photo 4">
+              </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. CORPUS CHRISTI FEATURE PAGE -->
+      <div class="page">
+        <div class="page-content location-page" style="--bg: url('image/corpus-christi.png');">
+          <img class="location-art" src="image/corpus-christi.png" alt="Corpus Christi artwork">
+          <div class="page-number">13</div>
+          <div class="quote-box">
+            <h2>Corpus Christi</h2>
+            <p>“Sparkling City by the Sea”</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. CORPUS CHRISTI TEAM PHOTO PAGE -->
+      <div class="page">
+        <div class="page-content team-page" style="--accent-bg: url('image/corpus-christi.png');">
+          <div class="page-number">14</div>
+          <div class="team-heading">
+            <h2>Corpus Christi Team</h2>
+            <p>Team moments and memories</p>
+          </div>
+          <div class="team-grid">
+              <figure class="team-photo">
+                <img src="image/team/corpus-christi-1.png" alt="Corpus Christi team photo 1">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/corpus-christi-2.png" alt="Corpus Christi team photo 2">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/corpus-christi-3.png" alt="Corpus Christi team photo 3">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/corpus-christi-4.png" alt="Corpus Christi team photo 4">
+              </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15. ODESSA FEATURE PAGE -->
+      <div class="page">
+        <div class="page-content location-page" style="--bg: url('image/odessa.png');">
+          <img class="location-art" src="image/odessa.png" alt="Odessa artwork">
+          <div class="page-number">15</div>
+          <div class="quote-box">
+            <h2>Odessa</h2>
+            <p>“The right place in Texas”</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16. ODESSA TEAM PHOTO PAGE -->
+      <div class="page">
+        <div class="page-content team-page" style="--accent-bg: url('image/odessa.png');">
+          <div class="page-number">16</div>
+          <div class="team-heading">
+            <h2>Odessa Team</h2>
+            <p>Team moments and memories</p>
+          </div>
+          <div class="team-grid">
+              <figure class="team-photo">
+                <img src="image/team/odessa-1.png" alt="Odessa team photo 1">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/odessa-2.png" alt="Odessa team photo 2">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/odessa-3.png" alt="Odessa team photo 3">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/odessa-4.png" alt="Odessa team photo 4">
+              </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17. MIDLAND FEATURE PAGE -->
+      <div class="page">
+        <div class="page-content location-page" style="--bg: url('image/midland.png');">
+          <img class="location-art" src="image/midland.png" alt="Midland artwork">
+          <div class="page-number">17</div>
+          <div class="quote-box">
+            <h2>Midland</h2>
+            <p>“The sky’s the limit”</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18. MIDLAND TEAM PHOTO PAGE -->
+      <div class="page">
+        <div class="page-content team-page" style="--accent-bg: url('image/midland.png');">
+          <div class="page-number">18</div>
+          <div class="team-heading">
+            <h2>Midland Team</h2>
+            <p>Team moments and memories</p>
+          </div>
+          <div class="team-grid">
+              <figure class="team-photo">
+                <img src="image/team/midland-1.png" alt="Midland team photo 1">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/midland-2.png" alt="Midland team photo 2">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/midland-3.png" alt="Midland team photo 3">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/midland-4.png" alt="Midland team photo 4">
+              </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- 19. HOUSTON FEATURE PAGE -->
+      <div class="page">
+        <div class="page-content location-page" style="--bg: url('image/houston.png');">
+          <img class="location-art" src="image/houston.png" alt="Houston artwork">
+          <div class="page-number">19</div>
+          <div class="quote-box">
+            <h2>Houston</h2>
+            <p>“The Space City”</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 20. HOUSTON TEAM PHOTO PAGE -->
+      <div class="page">
+        <div class="page-content team-page" style="--accent-bg: url('image/houston.png');">
+          <div class="page-number">20</div>
+          <div class="team-heading">
+            <h2>Houston Team</h2>
+            <p>Team moments and memories</p>
+          </div>
+          <div class="team-grid">
+              <figure class="team-photo">
+                <img src="image/team/houston-1.png" alt="Houston team photo 1">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/houston-2.png" alt="Houston team photo 2">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/houston-3.png" alt="Houston team photo 3">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/houston-4.png" alt="Houston team photo 4">
+              </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- 21. COLORADO FEATURE PAGE -->
+      <div class="page">
+        <div class="page-content location-page" style="--bg: url('image/colorado.png');">
+          <img class="location-art" src="image/colorado.png" alt="Colorado artwork">
+          <div class="page-number">21</div>
+          <div class="quote-box">
+            <h2>Colorado</h2>
+            <p>“The Centennial State”</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 22. COLORADO TEAM PHOTO PAGE -->
+      <div class="page">
+        <div class="page-content team-page" style="--accent-bg: url('image/colorado.png');">
+          <div class="page-number">22</div>
+          <div class="team-heading">
+            <h2>Colorado Team</h2>
+            <p>Team moments and memories</p>
+          </div>
+          <div class="team-grid">
+              <figure class="team-photo">
+                <img src="image/team/colorado-1.png" alt="Colorado team photo 1">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/colorado-2.png" alt="Colorado team photo 2">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/colorado-3.png" alt="Colorado team photo 3">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/colorado-4.png" alt="Colorado team photo 4">
+              </figure>
           </div>
         </div>
       </div>
 
     </div>
+  </main>
+
+  <div class="controls">
+    <button id="previous-page" type="button">← Previous</button>
+    <button id="next-page" type="button">Next →</button>
   </div>
 
-  <div class="page-count" id="pageCount">Page 1 of 6</div>
-  <p class="hint">Click the page to turn. Drag corners for a book-like flip.</p>
+  <div class="page-count" id="page-count">Cover</div>
+  <p class="hint">Each location has one feature page and one team-photo page.</p>
 
-  <footer>Houston Office News • Coming Soon</footer>
+  <footer>Houston Office News • July 2026</footer>
 
   <script>
-    const pages = document.querySelectorAll(".page");
+    document.addEventListener("DOMContentLoaded", function () {
+      const bookElement = document.getElementById("book");
+      const pageCountElement = document.getElementById("page-count");
 
-    const pageFlip = new St.PageFlip(document.getElementById("book"), {
-      width: 300,
-      height: 420,
-      size: "stretch",
-      minWidth: 230,
-      maxWidth: 620,
-      minHeight: 320,
-      maxHeight: 440,
-      autoSize: true,
-      maxShadowOpacity: 0.95,
-      showCover: true,
-      mobileScrollSupport: true,
-      usePortrait: window.innerWidth < 700,
-      flippingTime: 1300,
-      drawShadow: true,
-      useMouseEvents: true,
-      swipeDistance: 20,
-      clickEventForward: true,
-      disableFlipByClick: false
-    });
+      const pageFlip = new St.PageFlip(bookElement, {
+        width: 520,
+        height: 700,
+        size: "stretch",
+        minWidth: 300,
+        maxWidth: 520,
+        minHeight: 404,
+        maxHeight: 700,
+        maxShadowOpacity: 0.45,
+        showCover: true,
+        mobileScrollSupport: false,
+        usePortrait: true,
+        startPage: 0,
+        drawShadow: true,
+        flippingTime: 850
+      });
 
-    pageFlip.loadFromHTML(pages);
+      pageFlip.loadFromHTML(document.querySelectorAll(".page"));
 
-    const pageCount = document.getElementById("pageCount");
+      function updatePageLabel(pageIndex) {
+        pageCountElement.textContent =
+          pageIndex === 0 ? "Cover" : "Page " + pageIndex + " of 22";
+      }
 
-    pageFlip.on("flip", (e) => {
-      pageCount.textContent = "Page " + (e.data + 1) + " of " + pages.length;
+      pageFlip.on("flip", function (event) {
+        updatePageLabel(event.data);
+      });
+
+      document.getElementById("previous-page").addEventListener("click", function () {
+        pageFlip.flipPrev();
+      });
+
+      document.getElementById("next-page").addEventListener("click", function () {
+        pageFlip.flipNext();
+      });
+
+      updatePageLabel(0);
     });
   </script>
 </body>
