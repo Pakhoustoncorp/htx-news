@@ -307,6 +307,39 @@
       transform: rotate(1.6deg);
     }
 
+
+    /* ARIZONA OPEN SPREAD:
+       Sheet 1 is the left page; Sheet 2 is the right page. */
+    .arizona-left .arizona-story:nth-child(1) .arizona-photo-frame {
+      border-radius: 42% 18% 36% 16% / 18% 38% 20% 42%;
+      outline: 4px solid #0f766e;
+      transform: rotate(-1.3deg);
+    }
+
+    .arizona-left .arizona-story:nth-child(2) .arizona-photo-frame {
+      clip-path: polygon(
+        12% 0, 88% 0, 100% 12%, 96% 82%,
+        82% 100%, 14% 96%, 0 82%, 4% 14%
+      );
+      outline: 4px solid #f97316;
+      transform: rotate(1.3deg);
+    }
+
+    .arizona-right .arizona-story:nth-child(1) .arizona-photo-frame {
+      border-radius: 50%;
+      outline: 5px solid #0891b2;
+      transform: rotate(-1deg);
+    }
+
+    .arizona-right .arizona-story:nth-child(2) .arizona-photo-frame {
+      clip-path: polygon(
+        16% 0, 82% 4%, 100% 26%, 92% 78%,
+        72% 100%, 18% 94%, 0 70%, 6% 18%
+      );
+      outline: 5px solid #9333ea;
+      transform: rotate(1.6deg);
+    }
+
     .arizona-caption {
       width: 100%;
       min-height: 76px;
@@ -505,38 +538,27 @@
 
       <div class="page cover">
         <div class="page-content cover-image">
-          <img src="image/Final Cover to USE.png" alt="Houston Office News cover">
+          <img src="image/Final-cover.png" alt="Houston Office News cover">
         </div>
       </div>
 
 
-      <!-- 1. ARIZONA FEATURE PAGE -->
+
+      <!-- 1. ARIZONA SHEET 1 — LEFT PAGE -->
       <div class="page">
-        <div class="page-content location-page" style="--bg: url('image/arizona.png');">
-          <img class="location-art" src="image/Updated A.png" alt="Arizona artwork">
+        <div class="page-content arizona-team-page arizona-left"
+             style="background-image:url('image/Updated A.png');">
           <div class="page-number">1</div>
-          <div class="quote-box">
-            <h2>Arizona</h2>
-            <p>“The Grand Canyon State”</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. ARIZONA TEAM PHOTO PAGE 1 -->
-      <div class="page">
-        <div class="page-content arizona-team-page arizona-dino"
-             style="background-image:url('image/arizona.png');">
-          <div class="page-number">2</div>
 
           <div class="arizona-team-heading">
-            <h2>Arizona Team</h2>
-            <p>Our amazing team in Arizona<br>working together to achieve great things every day!</p>
+            <h2>Arizona</h2>
+            <p>“The Grand Canyon State”</p>
           </div>
 
           <div class="arizona-two-photo-grid">
             <figure class="arizona-story">
               <div class="arizona-photo-frame">
-                <img src="image/team/arizona-1.png"
+                <img src="image/AZ team 1.png.jpg"
                      alt="Area 6 team celebrating 100% ROCC passes">
               </div>
               <figcaption class="arizona-caption caption-teal">
@@ -546,7 +568,7 @@
 
             <figure class="arizona-story">
               <div class="arizona-photo-frame">
-                <img src="image/team/arizona-2.png"
+                <img src="image/AZ Team 2.png.jpg"
                      alt="Area 6 team during Supergirl promotion training">
               </div>
               <figcaption class="arizona-caption caption-orange">
@@ -557,21 +579,21 @@
         </div>
       </div>
 
-      <!-- 3. ARIZONA TEAM PHOTO PAGE 2 -->
+      <!-- 2. ARIZONA SHEET 2 — RIGHT PAGE -->
       <div class="page">
-        <div class="page-content arizona-team-page arizona-blue"
-             style="background-image:url('image/Updated A.png');">
-          <div class="page-number">23</div>
+        <div class="page-content arizona-team-page arizona-right"
+             style="background-image:url('image/A background.png');">
+          <div class="page-number">2</div>
 
           <div class="arizona-team-heading">
             <h2>Arizona Team</h2>
-            <p>Our amazing team in Arizona<br>working together to achieve great things every day!</p>
+            <p>Our amazing Arizona team working together to achieve great things every day!</p>
           </div>
 
           <div class="arizona-two-photo-grid">
             <figure class="arizona-story">
               <div class="arizona-photo-frame">
-                <img src="image/team/arizona-3.png"
+                <img src="image/AZ Team 3.png.jpg"
                      alt="D058 team recognized for the lowest number of complaints in Q2">
               </div>
               <figcaption class="arizona-caption caption-blue">
@@ -581,7 +603,7 @@
 
             <figure class="arizona-story">
               <div class="arizona-photo-frame">
-                <img src="image/team/arizona-4.png"
+                <img src="image/AZ Team 4.png.jpg"
                      alt="Area 6 team celebrating 100% ROCC passes">
               </div>
               <figcaption class="arizona-caption caption-purple">
@@ -592,7 +614,7 @@
         </div>
       </div>
 
-      <!-- 5. TUCSON FEATURE PAGE  -->
+      <!-- 3. TUCSON FEATURE PAGE -->
 
       <div class="page">
         <div class="page-content location-page" style="--bg: url('image/tucson.png');">
@@ -605,7 +627,7 @@
         </div>
       </div>
 
-      <!-- 5. TUCSON TEAM PHOTO PAGE  -->
+      <!-- 4. TUCSON TEAM PHOTO PAGE -->
       <div class="page">
         <div class="page-content team-page" style="--accent-bg: url('image/tucson.png');">
           <div class="page-number">4</div>
@@ -972,7 +994,7 @@
   </div>
 
   <div class="page-count" id="page-count">Cover</div>
-  <p class="hint">Arizona has two team-photo pages; each other location has one team-photo page.</p>
+  <p class="hint">Open the cover to see Arizona Sheet 1 on the left and Arizona Sheet 2 on the right.</p>
 
   <footer>Houston Office News • July 2026</footer>
 
@@ -1002,7 +1024,7 @@
 
       function updatePageLabel(pageIndex) {
         pageCountElement.textContent =
-          pageIndex === 0 ? "Cover" : "Page " + pageIndex + " of 23";
+          pageIndex === 0 ? "Cover" : "Page " + pageIndex + " of 22";
       }
 
       pageFlip.on("flip", function (event) {
