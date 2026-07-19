@@ -178,141 +178,6 @@
       text-shadow: 0 2px 6px rgba(0,0,0,.55);
     }
 
-
-    /* ARIZONA TEAM PAGES: TWO PHOTOS PER PAGE */
-    .arizona-team-page {
-      position: relative;
-      isolation: isolate;
-      padding: 24px;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    .arizona-team-page::before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,.08) 0%,
-        rgba(0,0,0,.14) 48%,
-        rgba(0,0,0,.46) 100%
-      );
-    }
-
-    .arizona-team-heading {
-      position: relative;
-      z-index: 2;
-      margin: 2px 52px 15px 4px;
-      padding: 10px 14px;
-      color: #fff;
-      background: rgba(0,0,0,.42);
-      border: 1px solid rgba(255,255,255,.38);
-      border-radius: 18px;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 8px 18px rgba(0,0,0,.18);
-    }
-
-    .arizona-team-heading h2 {
-      margin: 0 0 3px;
-      color: #fff;
-      font-size: clamp(25px, 4vw, 33px);
-      text-shadow: 0 2px 7px rgba(0,0,0,.55);
-    }
-
-    .arizona-team-heading p {
-      margin: 0;
-      color: #fff;
-      font-size: 14px;
-      font-weight: 700;
-      text-shadow: 0 2px 6px rgba(0,0,0,.55);
-    }
-
-    .arizona-two-photo-grid {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      height: calc(100% - 92px);
-      align-items: center;
-    }
-
-    .arizona-story {
-      min-width: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .arizona-photo-frame {
-      width: 100%;
-      height: 410px;
-      overflow: hidden;
-      background: rgba(255,255,255,.94);
-      border: 7px solid #fff;
-      box-shadow:
-        0 12px 24px rgba(0,0,0,.30),
-        0 0 0 3px rgba(255,255,255,.65);
-    }
-
-    .arizona-story:nth-child(1) .arizona-photo-frame {
-      border-radius: 44% 18% 36% 16% / 18% 38% 20% 42%;
-      border-color: #0f766e;
-      transform: rotate(-1.5deg);
-    }
-
-    .arizona-story:nth-child(2) .arizona-photo-frame {
-      clip-path: polygon(
-        12% 0, 88% 0, 100% 12%, 96% 82%,
-        82% 100%, 14% 96%, 0 82%, 4% 14%
-      );
-      border-color: #f97316;
-      transform: rotate(1.5deg);
-    }
-
-    .arizona-photo-frame img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .arizona-caption {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 11px 12px;
-      color: #fff;
-      font-size: 15px;
-      font-weight: 800;
-      line-height: 1.25;
-      border-radius: 18px;
-      box-shadow: 0 8px 16px rgba(0,0,0,.22);
-      text-shadow: 0 2px 5px rgba(0,0,0,.45);
-    }
-
-    .caption-teal {
-      background: linear-gradient(135deg, rgba(15,118,110,.94), rgba(13,148,136,.90));
-    }
-
-    .caption-orange {
-      background: linear-gradient(135deg, rgba(234,88,12,.96), rgba(249,115,22,.90));
-    }
-
-    .caption-purple {
-      background: linear-gradient(135deg, rgba(109,40,217,.95), rgba(147,51,234,.90));
-    }
-
-    .caption-blue {
-      background: linear-gradient(135deg, rgba(29,78,216,.95), rgba(37,99,235,.90));
-    }
-
     /* SECOND PAGE FOR EACH LOCATION */
     .team-page {
       --accent-bg: none;
@@ -450,12 +315,6 @@
       .team-heading { margin: 4px 42px 10px 4px; }
       .team-grid { gap: 9px; height: calc(100% - 92px); }
       .team-photo { border-width: 3px; border-radius: 12px; }
-      .arizona-team-page { padding: 13px; }
-      .arizona-team-heading { margin: 2px 42px 10px 2px; }
-      .arizona-two-photo-grid { gap: 10px; height: calc(100% - 82px); }
-      .arizona-photo-frame { height: 330px; border-width: 4px; }
-      .arizona-caption { min-height: 62px; padding: 9px; font-size: 13px; }
-
     }
   </style>
 </head>
@@ -473,7 +332,7 @@
 
       <div class="page cover">
         <div class="page-content cover-image">
-          <img src="image/Final Cover to USE.png" alt="Houston Office News cover">
+          <img src="image/Final-cover..png" alt="Houston Office News cover">
         </div>
       </div>
 
@@ -490,78 +349,32 @@
         </div>
       </div>
 
-      <!-- 2. ARIZONA TEAM PHOTO PAGE 1 -->
+      <!-- 2. ARIZONA TEAM PHOTO PAGE -->
       <div class="page">
-        <div class="page-content arizona-team-page"
-             style="background-image:url('image/arizona.png');">
+        <div class="page-content team-page" style="--accent-bg: url('image/arizona.png');">
           <div class="page-number">2</div>
-
-          <div class="arizona-team-heading">
+          <div class="team-heading">
             <h2>Arizona Team</h2>
-            <p>AZ - Area 6</p>
+            <p>Team moments and memories</p>
           </div>
-
-          <div class="arizona-two-photo-grid">
-            <figure class="arizona-story">
-              <div class="arizona-photo-frame">
-                <img src="image/team/arizona-1.png"
-                     alt="Area 6 team celebrating 100% ROCC passes">
-              </div>
-              <figcaption class="arizona-caption caption-teal">
-                Area 6 - 100% ROCC passes
-              </figcaption>
-            </figure>
-
-            <figure class="arizona-story">
-              <div class="arizona-photo-frame">
-                <img src="image/team/arizona-2.png"
-                     alt="Area 6 team during Supergirl promotion training">
-              </div>
-              <figcaption class="arizona-caption caption-orange">
-                Area 6 - Fun training for Supergirl promo
-              </figcaption>
-            </figure>
+          <div class="team-grid">
+              <figure class="team-photo">
+                <img src="image/team/arizona-1.png" alt="Arizona team photo 1">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/arizona-2.png" alt="Arizona team photo 2">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/arizona-3.png" alt="Arizona team photo 3">
+              </figure>
+              <figure class="team-photo">
+                <img src="image/team/arizona-4.png" alt="Arizona team photo 4">
+              </figure>
           </div>
         </div>
       </div>
 
-      <!-- 3. ARIZONA TEAM PHOTO PAGE 2 -->
-      <div class="page">
-        <div class="page-content arizona-team-page"
-             style="background-image:url('image/Updated A.png');">
-          <div class="page-number">23</div>
-
-          <div class="arizona-team-heading">
-            <h2>Arizona Team</h2>
-            <p>Team achievements and memories</p>
-          </div>
-
-          <div class="arizona-two-photo-grid">
-            <figure class="arizona-story">
-              <div class="arizona-photo-frame">
-                <img src="image/team/arizona-3.png"
-                     alt="D058 team recognized for the lowest number of complaints in Q2">
-              </div>
-              <figcaption class="arizona-caption caption-blue">
-                D058 - Lowest number of complaints Q2
-              </figcaption>
-            </figure>
-
-            <figure class="arizona-story">
-              <div class="arizona-photo-frame">
-                <img src="image/team/arizona-4.png"
-                     alt="Area 6 team celebrating 100% ROCC passes">
-              </div>
-              <figcaption class="arizona-caption caption-purple">
-                Area 6 - 100% ROCC passes
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. TUCSON FEATURE PAGE  -->
-
+      <!-- 3. TUCSON FEATURE PAGE -->
       <div class="page">
         <div class="page-content location-page" style="--bg: url('image/tucson.png');">
           <img class="location-art" src="image/tucson.png" alt="Tucson artwork">
@@ -573,7 +386,7 @@
         </div>
       </div>
 
-      <!-- 5. TUCSON TEAM PHOTO PAGE  -->
+      <!-- 4. TUCSON TEAM PHOTO PAGE -->
       <div class="page">
         <div class="page-content team-page" style="--accent-bg: url('image/tucson.png');">
           <div class="page-number">4</div>
@@ -598,7 +411,7 @@
         </div>
       </div>
 
-      <!-- 6. EL PASO FEATURE PAGE  -->
+      <!-- 5. EL PASO FEATURE PAGE -->
       <div class="page">
         <div class="page-content location-page" style="--bg: url('image/el-paso.png');">
           <img class="location-art" src="image/el-paso.png" alt="El Paso artwork">
@@ -610,7 +423,7 @@
         </div>
       </div>
 
-      <!-- 7. EL PASO TEAM PHOTO PAGE  -->
+      <!-- 6. EL PASO TEAM PHOTO PAGE -->
       <div class="page">
         <div class="page-content team-page" style="--accent-bg: url('image/el-paso.png');">
           <div class="page-number">6</div>
@@ -635,7 +448,7 @@
         </div>
       </div>
 
-      <!-- 8. LAS VEGAS FEATURE PAGE  -->
+      <!-- 7. LAS VEGAS FEATURE PAGE -->
       <div class="page">
         <div class="page-content location-page" style="--bg: url('image/las-vegas.png');">
           <img class="location-art" src="image/las-vegas.png" alt="Las Vegas artwork">
@@ -647,7 +460,7 @@
         </div>
       </div>
 
-      <!-- 9. LAS VEGAS TEAM PHOTO PAGE  -->
+      <!-- 8. LAS VEGAS TEAM PHOTO PAGE -->
       <div class="page">
         <div class="page-content team-page" style="--accent-bg: url('image/las-vegas.png');">
           <div class="page-number">8</div>
@@ -672,7 +485,7 @@
         </div>
       </div>
 
-      <!-- 10. DALLAS FEATURE PAGE  -->
+      <!-- 9. DALLAS FEATURE PAGE -->
       <div class="page">
         <div class="page-content location-page" style="--bg: url('image/dallas.png');">
           <img class="location-art" src="image/dallas.png" alt="Dallas artwork">
@@ -684,7 +497,7 @@
         </div>
       </div>
 
-      <!-- 11. DALLAS TEAM PHOTO PAGE  -->
+      <!-- 10. DALLAS TEAM PHOTO PAGE -->
       <div class="page">
         <div class="page-content team-page" style="--accent-bg: url('image/dallas.png');">
           <div class="page-number">10</div>
@@ -709,7 +522,7 @@
         </div>
       </div>
 
-      <!-- 12. WEST TEXAS FEATURE PAGE  -->
+      <!-- 11. WEST TEXAS FEATURE PAGE -->
       <div class="page">
         <div class="page-content location-page" style="--bg: url('image/west-texas.png');">
           <img class="location-art" src="image/west-texas.png" alt="West Texas artwork">
@@ -721,7 +534,7 @@
         </div>
       </div>
 
-      <!-- 13. WEST TEXAS TEAM PHOTO PAGE  -->
+      <!-- 12. WEST TEXAS TEAM PHOTO PAGE -->
       <div class="page">
         <div class="page-content team-page" style="--accent-bg: url('image/west-texas.png');">
           <div class="page-number">12</div>
@@ -746,7 +559,7 @@
         </div>
       </div>
 
-      <!-- 14. CORPUS CHRISTI FEATURE PAGE  -->
+      <!-- 13. CORPUS CHRISTI FEATURE PAGE -->
       <div class="page">
         <div class="page-content location-page" style="--bg: url('image/corpus-christi.png');">
           <img class="location-art" src="image/corpus-christi.png" alt="Corpus Christi artwork">
@@ -758,7 +571,7 @@
         </div>
       </div>
 
-      <!-- 15. CORPUS CHRISTI TEAM PHOTO PAGE  -->
+      <!-- 14. CORPUS CHRISTI TEAM PHOTO PAGE -->
       <div class="page">
         <div class="page-content team-page" style="--accent-bg: url('image/corpus-christi.png');">
           <div class="page-number">14</div>
@@ -783,7 +596,7 @@
         </div>
       </div>
 
-      <!-- 16. ODESSA FEATURE PAGE  -->
+      <!-- 15. ODESSA FEATURE PAGE -->
       <div class="page">
         <div class="page-content location-page" style="--bg: url('image/odessa.png');">
           <img class="location-art" src="image/odessa.png" alt="Odessa artwork">
@@ -795,7 +608,7 @@
         </div>
       </div>
 
-      <!-- 17. ODESSA TEAM PHOTO PAGE  -->
+      <!-- 16. ODESSA TEAM PHOTO PAGE -->
       <div class="page">
         <div class="page-content team-page" style="--accent-bg: url('image/odessa.png');">
           <div class="page-number">16</div>
@@ -820,7 +633,7 @@
         </div>
       </div>
 
-      <!-- 18. MIDLAND FEATURE PAGE  -->
+      <!-- 17. MIDLAND FEATURE PAGE -->
       <div class="page">
         <div class="page-content location-page" style="--bg: url('image/midland.png');">
           <img class="location-art" src="image/midland.png" alt="Midland artwork">
@@ -832,7 +645,7 @@
         </div>
       </div>
 
-      <!-- 19. MIDLAND TEAM PHOTO PAGE  -->
+      <!-- 18. MIDLAND TEAM PHOTO PAGE -->
       <div class="page">
         <div class="page-content team-page" style="--accent-bg: url('image/midland.png');">
           <div class="page-number">18</div>
@@ -857,7 +670,7 @@
         </div>
       </div>
 
-      <!-- 20. HOUSTON FEATURE PAGE  -->
+      <!-- 19. HOUSTON FEATURE PAGE -->
       <div class="page">
         <div class="page-content location-page" style="--bg: url('image/houston.png');">
           <img class="location-art" src="image/houston.png" alt="Houston artwork">
@@ -869,7 +682,7 @@
         </div>
       </div>
 
-      <!-- 21. HOUSTON TEAM PHOTO PAGE  -->
+      <!-- 20. HOUSTON TEAM PHOTO PAGE -->
       <div class="page">
         <div class="page-content team-page" style="--accent-bg: url('image/houston.png');">
           <div class="page-number">20</div>
@@ -894,7 +707,7 @@
         </div>
       </div>
 
-      <!-- 22. COLORADO FEATURE PAGE  -->
+      <!-- 21. COLORADO FEATURE PAGE -->
       <div class="page">
         <div class="page-content location-page" style="--bg: url('image/colorado.png');">
           <img class="location-art" src="image/colorado.png" alt="Colorado artwork">
@@ -906,7 +719,7 @@
         </div>
       </div>
 
-      <!-- 23. COLORADO TEAM PHOTO PAGE  -->
+      <!-- 22. COLORADO TEAM PHOTO PAGE -->
       <div class="page">
         <div class="page-content team-page" style="--accent-bg: url('image/colorado.png');">
           <div class="page-number">22</div>
@@ -940,7 +753,7 @@
   </div>
 
   <div class="page-count" id="page-count">Cover</div>
-  <p class="hint">Arizona has two team-photo pages; each other location has one team-photo page.</p>
+  <p class="hint">Each location has one feature page and one team-photo page.</p>
 
   <footer>Houston Office News • July 2026</footer>
 
@@ -970,7 +783,7 @@
 
       function updatePageLabel(pageIndex) {
         pageCountElement.textContent =
-          pageIndex === 0 ? "Cover" : "Page " + pageIndex + " of 23";
+          pageIndex === 0 ? "Cover" : "Page " + pageIndex + " of 22";
       }
 
       pageFlip.on("flip", function (event) {
