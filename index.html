@@ -179,17 +179,18 @@
     }
 
 
-    /* ARIZONA TEAM PAGES: MATCH THE REFERENCE DESIGN */
+    /* ARIZONA TWO-PAGE OPEN MAGAZINE SPREAD */
     .arizona-team-page {
       position: relative;
       isolation: isolate;
-      padding: 20px 22px 18px;
+      padding: 18px 20px 18px;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       color: #fff;
     }
 
+    /* Keep the background artwork visible but improve text readability */
     .arizona-team-page::before {
       content: "";
       position: absolute;
@@ -197,21 +198,30 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(0,0,0,.04) 0%,
-        rgba(0,0,0,.10) 44%,
-        rgba(0,0,0,.30) 100%
+        rgba(0,0,0,.08) 0%,
+        rgba(0,0,0,.03) 42%,
+        rgba(0,0,0,.22) 100%
       );
+      pointer-events: none;
+    }
+
+    /* LEFT SHEET */
+    .arizona-left {
+      background-position: center center;
+    }
+
+    /* RIGHT SHEET */
+    .arizona-right {
+      background-position: center center;
     }
 
     .arizona-team-heading {
       position: relative;
-      z-index: 2;
-      margin: 0 48px 8px 0;
-      padding: 4px 10px 8px;
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-      backdrop-filter: none;
+      z-index: 3;
+      width: calc(100% - 34px);
+      margin: 0 auto;
+      padding: 0 10px;
+      text-align: center;
     }
 
     .arizona-team-heading h2 {
@@ -219,30 +229,36 @@
       color: #fff;
       font-family: Georgia, "Times New Roman", serif;
       font-style: italic;
-      font-size: clamp(27px, 4.4vw, 39px);
-      line-height: 1;
-      text-shadow: 0 3px 8px rgba(0,0,0,.55);
+      font-size: clamp(34px, 5.2vw, 52px);
+      line-height: 1.02;
+      letter-spacing: .3px;
+      text-shadow:
+        0 4px 0 rgba(33,18,12,.55),
+        0 7px 13px rgba(0,0,0,.52);
     }
 
     .arizona-team-heading p {
       margin: 8px auto 0;
-      max-width: 390px;
+      max-width: 455px;
       color: #fff;
-      font-size: 14px;
-      font-weight: 800;
-      line-height: 1.3;
-      text-shadow: 0 2px 6px rgba(0,0,0,.65);
+      font-size: clamp(13px, 2.1vw, 17px);
+      font-weight: 900;
+      line-height: 1.22;
+      text-shadow:
+        0 2px 2px rgba(0,0,0,.88),
+        0 4px 8px rgba(0,0,0,.70);
     }
 
+    /* Photos sit lower so the upper artwork and full words remain visible */
     .arizona-two-photo-grid {
       position: absolute;
-      z-index: 2;
-      left: 28px;
-      right: 28px;
-      bottom: 70px;
+      z-index: 3;
+      left: 24px;
+      right: 24px;
+      bottom: 44px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 20px;
       align-items: end;
     }
 
@@ -252,19 +268,20 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .arizona-photo-frame {
       position: relative;
       width: 100%;
-      height: 285px;
+      height: 300px;
       overflow: hidden;
       background: #fff;
       border: 6px solid #fff;
+      border-radius: 28px;
       box-shadow:
-        0 12px 24px rgba(0,0,0,.34),
-        0 0 0 3px rgba(255,255,255,.70);
+        0 12px 24px rgba(0,0,0,.35),
+        0 0 0 4px rgba(8,145,178,.88);
     }
 
     .arizona-photo-frame img {
@@ -275,101 +292,65 @@
       object-position: center;
     }
 
-    /* Page 2 shapes */
-    .arizona-dino .arizona-story:nth-child(1) .arizona-photo-frame {
-      border-radius: 42% 18% 36% 16% / 18% 38% 20% 42%;
-      outline: 4px solid #0f766e;
-      transform: rotate(-1.3deg);
-    }
-
-    .arizona-dino .arizona-story:nth-child(2) .arizona-photo-frame {
-      clip-path: polygon(
-        12% 0, 88% 0, 100% 12%, 96% 82%,
-        82% 100%, 14% 96%, 0 82%, 4% 14%
-      );
-      outline: 4px solid #f97316;
-      transform: rotate(1.3deg);
-    }
-
-    /* Page 3 shapes */
-    .arizona-blue .arizona-story:nth-child(1) .arizona-photo-frame {
-      border-radius: 50%;
-      outline: 5px solid #0f766e;
-      transform: rotate(-1deg);
-    }
-
-    .arizona-blue .arizona-story:nth-child(2) .arizona-photo-frame {
-      clip-path: polygon(
-        16% 0, 82% 4%, 100% 26%, 92% 78%,
-        72% 100%, 18% 94%, 0 70%, 6% 18%
-      );
-      outline: 5px solid #f97316;
-      transform: rotate(1.6deg);
-    }
-
-
-    /* ARIZONA OPEN SPREAD:
-       Sheet 1 is the left page; Sheet 2 is the right page. */
-    .arizona-left .arizona-story:nth-child(1) .arizona-photo-frame {
-      border-radius: 42% 18% 36% 16% / 18% 38% 20% 42%;
-      outline: 4px solid #0f766e;
-      transform: rotate(-1.3deg);
+    /* Use large clean rounded frames so pictures fully cover their frame */
+    .arizona-left .arizona-story:nth-child(1) .arizona-photo-frame,
+    .arizona-left .arizona-story:nth-child(2) .arizona-photo-frame,
+    .arizona-right .arizona-story:nth-child(1) .arizona-photo-frame,
+    .arizona-right .arizona-story:nth-child(2) .arizona-photo-frame {
+      clip-path: none;
+      transform: none;
+      outline: none;
+      border-radius: 28px;
     }
 
     .arizona-left .arizona-story:nth-child(2) .arizona-photo-frame {
-      clip-path: polygon(
-        12% 0, 88% 0, 100% 12%, 96% 82%,
-        82% 100%, 14% 96%, 0 82%, 4% 14%
-      );
-      outline: 4px solid #f97316;
-      transform: rotate(1.3deg);
+      box-shadow:
+        0 12px 24px rgba(0,0,0,.35),
+        0 0 0 4px rgba(249,115,22,.92);
     }
 
     .arizona-right .arizona-story:nth-child(1) .arizona-photo-frame {
-      border-radius: 50%;
-      outline: 5px solid #0891b2;
-      transform: rotate(-1deg);
+      box-shadow:
+        0 12px 24px rgba(0,0,0,.35),
+        0 0 0 4px rgba(8,145,178,.92);
     }
 
     .arizona-right .arizona-story:nth-child(2) .arizona-photo-frame {
-      clip-path: polygon(
-        16% 0, 82% 4%, 100% 26%, 92% 78%,
-        72% 100%, 18% 94%, 0 70%, 6% 18%
-      );
-      outline: 5px solid #9333ea;
-      transform: rotate(1.6deg);
+      box-shadow:
+        0 12px 24px rgba(0,0,0,.35),
+        0 0 0 4px rgba(147,51,234,.92);
     }
 
     .arizona-caption {
       width: 100%;
-      min-height: 76px;
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 11px 14px;
+      padding: 10px 14px;
       color: #fff;
       font-size: 15px;
       font-weight: 900;
-      line-height: 1.22;
+      line-height: 1.2;
       border-radius: 20px;
-      box-shadow: 0 8px 18px rgba(0,0,0,.28);
-      text-shadow: 0 2px 5px rgba(0,0,0,.55);
+      box-shadow: 0 8px 18px rgba(0,0,0,.30);
+      text-shadow: 0 2px 4px rgba(0,0,0,.62);
     }
 
     .caption-teal {
-      background: linear-gradient(135deg, rgba(15,118,110,.98), rgba(13,148,136,.92));
+      background: linear-gradient(135deg, rgba(15,118,110,.98), rgba(13,148,136,.96));
     }
 
     .caption-orange {
-      background: linear-gradient(135deg, rgba(234,88,12,.98), rgba(249,115,22,.92));
+      background: linear-gradient(135deg, rgba(234,88,12,.98), rgba(249,115,22,.96));
     }
 
     .caption-purple {
-      background: linear-gradient(135deg, rgba(109,40,217,.98), rgba(147,51,234,.92));
+      background: linear-gradient(135deg, rgba(109,40,217,.98), rgba(147,51,234,.96));
     }
 
     .caption-blue {
-      background: linear-gradient(135deg, rgba(14,116,144,.98), rgba(8,145,178,.92));
+      background: linear-gradient(135deg, rgba(14,116,144,.98), rgba(8,145,178,.96));
     }
 
     /* SECOND PAGE FOR EACH LOCATION */
@@ -509,16 +490,18 @@
       .team-heading { margin: 4px 42px 10px 4px; }
       .team-grid { gap: 9px; height: calc(100% - 92px); }
       .team-photo { border-width: 3px; border-radius: 12px; }
-      .arizona-team-page { padding: 12px; }
-      .arizona-team-heading { margin-right: 38px; }
+      .arizona-team-page { padding: 10px; }
+      .arizona-team-heading { width: calc(100% - 24px); }
+      .arizona-team-heading h2 { font-size: clamp(28px, 7vw, 40px); }
+      .arizona-team-heading p { font-size: 12px; max-width: 360px; }
       .arizona-two-photo-grid {
-        left: 14px;
-        right: 14px;
-        bottom: 48px;
-        gap: 12px;
+        left: 12px;
+        right: 12px;
+        bottom: 36px;
+        gap: 10px;
       }
-      .arizona-photo-frame { height: 235px; border-width: 4px; }
-      .arizona-caption { min-height: 66px; padding: 9px; font-size: 12px; }
+      .arizona-photo-frame { height: 245px; border-width: 4px; border-radius: 20px; }
+      .arizona-caption { min-height: 64px; padding: 8px; font-size: 12px; border-radius: 16px; }
 
 
     }
@@ -582,7 +565,7 @@
       <!-- 2. ARIZONA SHEET 2 — RIGHT PAGE -->
       <div class="page">
         <div class="page-content arizona-team-page arizona-right"
-             style="background-image:url('image/A background.png');">
+             style="background-image:url('image/A background.png'); background-size:cover; background-position:center;">
           <div class="page-number">2</div>
 
           <div class="arizona-team-heading">
